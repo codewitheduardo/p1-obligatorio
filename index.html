@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obligatorio | P1</title>
+    <link
+      rel="shortcut icon"
+      href="https://i.ibb.co/m625NKf/NU-EZ-ICON.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="estilos/styles.css" />
+  </head>
+  <body>
+    <div id="contenedor">
+
+      <!--INICIO DEL CABEZAL-->
+      <header>
+        <img
+          id="logo"
+          src="https://i.ibb.co/cvmgQgx/NU-EZ-LOGO.png"
+          alt="logo"
+        />
+        <nav>
+          <ul id="navPrincipal">
+            <li>
+              <a class="boton-admin Solo-Logueado" onclick="mostrarGanancias()"
+                >Informe Ganancias</a
+              >
+            </li>
+            <li>
+              <a
+                class="boton-admin Solo-Logueado"
+                onclick="mostrarAprobacionDeReservas()"
+                >Aprobacion Reservas</a
+              >
+            </li>
+            <li>
+              <a
+                class="boton-admin Solo-Logueado"
+                onclick="mostrarCrearDestinos()"
+                >Crear Destinos</a
+              >
+            </li>
+            <li>
+              <a
+                class="boton-admin Solo-Logueado"
+                onclick="mostrarAdministrarDestinos()"
+                >Administrar Destinos</a
+              >
+            </li>
+            <li>
+              <a class="boton-usuario Solo-Logueado" onclick="mostrarDestinos()"
+                >Reservar Destinos</a
+              >
+            </li>
+            <li>
+              <a
+                class="boton-usuario Solo-Logueado"
+                onclick="mostrarDestinosOfertas()"
+                >Ver Ofertas</a
+              >
+            </li>
+            <li>
+              <a
+                class="boton-usuario Solo-Logueado"
+                onclick="mostrarHistorialDeReservas()"
+                >Ver lista de reservas</a
+              >
+            </li>
+            <li>
+              <a class="boton-ambos Solo-Logueado" onclick="logout()">LOGOUT</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--FIN CABEZAL-->
+
+      <main>
+        <section>
+          <!--LOGIN-->
+          <div id="divLogin" class="pagina">
+            <label for="txtUsuarioLogin">Nombre de Usuario:</label>
+            <input type="text" id="txtUsuarioLogin" />
+            <label for="txtPasswordLogin">Contraseña:</label>
+            <input type="password" id="txtPasswordLogin" />
+            <p id="pResultadosLogin"></p>
+            <button id="btnLogin">LOGIN</button>
+            <button id="btnMostrarRegistro">Registrarse</button>
+          </div>
+          <!--FIN DE LOGIN-->
+
+          <!--REGISTRO DE USUARIOS-->
+          <div id="divRegistroUsuario" class="pagina">
+            <label for="txtNombre">Nombre :</label>
+            <input type="text" id="txtNombre" class="input-registroCliente" />
+            <label for="txtApellido">Apellido: </label>
+            <input type="text" id="txtApellido" class="input-registroCliente" />
+            <label for="txtNombreUsuario">Nombre de Usuario: </label>
+            <input
+              type="text"
+              id="txtNombreUsuario"
+              class="input-registroCliente"
+            />
+            <label for="txtPassword">Contraseña: </label>
+            <input
+              type="password"
+              id="txtPassword"
+              class="input-registroCliente"
+            />
+            <label for="txtTarjetaCredito">Tarjeta de crédito: </label>
+            <input
+              type="text"
+              id="txtTarjetaCredito"
+              class="input-registroCliente"
+            />
+            <label for="txtCvc">CVC:</label>
+            <input type="text" id="txtCvc" class="input-registroCliente" />
+            <button id="btnRegistrar">Registrarse</button>
+            <button id="btnLoginRegistro">Login</button>
+            <p id="pResultadosRegistro"></p>
+          </div>
+          <!--FIN  REGISTRO DE USUARIOS-->
+
+          <!--RESERVA DE DESTINOS-->
+          <div id="divInicioTablaDestinos" class="pagina">
+            <h3>RESERVA AQUÍ TU DESTINO</h3>
+            <p id="pClienteSaldoInicio"></p>
+            <p id="pClienteMillasInicio"></p>
+            <br />
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>NOMBRE</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>PRECIO / PERSONA</th>
+                  <th>OFERTA</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>MEDIO DE PAGO</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbodyDestinos"></tbody>
+            </table>
+          </div>
+          <!--FIN RESERVA DE DESTINOS-->
+
+          <!--HISTORIAL DE RESERVAS-->
+          <div id="divHistorialDeReservas" class="pagina">
+            <h3>RESERVAS PENDIENTES</h3>
+            <br />
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>NOMBRE</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>MONTO TOTAL</th>
+                  <th>ESTADO</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbodyHistorialDeReservasPendientes"></tbody>
+            </table>
+            <br /><br />
+            <hr />
+            <h3>HISTORIAL DE RESERVAS</h3>
+            <br />
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>NOMBRE</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>MONTO TOTAL</th>
+                  <th>ESTADO</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbodyHistorialDeReservas"></tbody>
+            </table>
+            <hr />
+          </div>
+          <!--FIN HISTORIAL DE RESERVAS-->
+
+          <!--DESTINOS EN OFERTA-->
+          <div id="divDestinosEnOferta" class="pagina">
+            <h3>DESTINOS EN OFERTA</h3>
+            <p id="pClienteSaldoOferta"></p>
+            <p id="pClienteMillasOferta"></p>
+            <br />
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>NOMBRE</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>PRECIO / PERSONA</th>
+                  <th>OFERTA</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>MEDIO DE PAGO</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="tbodyOfertas"></tbody>
+            </table>
+          </div>
+          <!--FIN DESTINOS EN OFERTA-->
+
+          <!-- APROBACION DE RESERVAS -->
+          <div id="divAprobacionDeReservas" class="pagina">
+            <h3>LISTADO Y APROBACIÓN DE LAS RESERVAS DE LOS CLIENTES</h3>
+            <br />
+            <h3>RESERVAS PENDIENTES</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>PRECIO</th>
+                  <th>ESTADO</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>CUPOS</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyReservasPendientes"></tbody>
+            </table>
+            <br />
+            <hr />
+            <h3>RESERVAS APROBADAS</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>PRECIO</th>
+                  <th>ESTADO</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>CUPOS</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyReservasAprobadas"></tbody>
+            </table>
+            <br />
+            <hr />
+            <h3>RESERVAS CANCELADAS</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>PRECIO</th>
+                  <th>ESTADO</th>
+                  <th>CANTIDAD DE PERSONAS</th>
+                  <th>CUPOS</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyReservasCanceladas"></tbody>
+            </table>
+          </div>
+          <!--FIN APROBACION DE RESERVAS-->
+
+          <!-- CREAR DESTINOS -->
+          <div id="divCrearDestinos" class="pagina">
+            <label for="txtNombreDestino">Nombre del destino:</label>
+            <input type="text" id="txtNombreDestino" />
+            <br />
+            <label for="txtPrecioDestino">Precio por persona:</label>
+            <input type="text" id="txtPrecioDestino" />
+            <br />
+            <label for="txtDescripcionDestino">Descripción del destino:</label>
+            <input type="text" id="txtDescripcionDestino" />
+            <br />
+            <label for="txtUrlDestino">Url de la imagen:</label>
+            <input type="text" id="txtUrlDestino" />
+            <br />
+            <label for="txtCantidadCupos">Cantidad de cupos:</label>
+            <input type="text" id="txtCantidadCupos" />
+            <p id="pResultadoCrearDestino"></p>
+            <button id="btnCrearDestino">Crear Destino</button>
+          </div>
+          <!--FIN CREAR DESTINOS-->
+
+          <!-- ADMINISTRAR DESTINOS-->
+          <div id="divAdministrarDestinos" class="pagina">
+            <h3>ADMINISTRAR DESTINOS</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>IMAGEN</th>
+                  <th>NOMBRE</th>
+                  <th>DESCRIPCIÓN</th>
+                  <th>PRECIO</th>
+                  <th>OFERTA</th>
+                  <th>ESTADO ACTUAL</th>
+                  <th>ESTADO</th>
+                  <th>CUPOS</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyAdministrarDestinos"></tbody>
+            </table>
+          </div>
+          <!--FIN ADMINISTRAR DESTINOS-->
+
+          <!-- INFORME DE GANANCIAS -->
+          <div id="divInformeGanancias" class="pagina">
+            <h3>INFORME DE GANANCIAS</h3>
+            <h4 id="pGananciaTotal">GANANCIA TOTAL:</h4>
+            <br />
+            <table>
+              <thead>
+                <tr>
+                  <th>DESTINO</th>
+                  <th>CANTIDAD DE CUPOS RESERVADOS</th>
+                  <th>GANANCIA</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyGananciasDestinos"></tbody>
+            </table>
+          </div>
+          <!--FIN INFORME DE GANANCIAS-->
+          
+        </section>
+      </main>
+    </div>
+    <script src="js/clases.js"></script>
+    <script src="js/sistema.js"></script>
+    <script src="js/codigo.js"></script>
+  </body>
+</html>
