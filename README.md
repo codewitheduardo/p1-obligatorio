@@ -37,7 +37,7 @@ Este proyecto es una **landing page interactiva** que simula el sitio web de una
 1. Cloná el repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/agencia-viajes-js.git
+   git clone https://github.com/codewitheduardo/p1-obligatorio.git
    ```
 
 2. Abrí la carpeta del proyecto con tu editor de preferencia.
